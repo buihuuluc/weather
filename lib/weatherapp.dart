@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import '../widgets/single_weather.dart';
 import '../models/weather_location.dart';
 import 'widgets/slider_dot.dart';
+import 'network_api/openweathers.dart';
 
 class WeatherApp extends StatefulWidget {
 
@@ -13,7 +14,7 @@ class WeatherApp extends StatefulWidget {
 class _WeatherAppState extends State<WeatherApp> {
 
   int _currentPage = 0;
-  String backgImg;
+  String backgImg = '';
 
   _onPageChange(int i){
     setState(() {
@@ -30,6 +31,10 @@ class _WeatherAppState extends State<WeatherApp> {
       backgImg = 'assets/cloudy.jpeg';
     }else if(locationList[_currentPage].weatherType == 'Sunny'){
       backgImg = 'assets/sunny.jpg';
+    }else if(locationList[_currentPage].weatherType == 'Rainy'){
+      backgImg = 'assets/rainy.jpg';
+    }else if(locationList[_currentPage].weatherType == 'Rainy'){
+      backgImg = 'assets/rainy.jpg';
     }else if(locationList[_currentPage].weatherType == 'Rainy'){
       backgImg = 'assets/rainy.jpg';
     }
@@ -77,7 +82,7 @@ class _WeatherAppState extends State<WeatherApp> {
                 margin: EdgeInsets.only(top: 92, left: 15),
                 child: Row(
                   children: [
-                    for(int i=0; i<locationList.length;i++)
+                    for(int i=0; i<6; i++)
                       if( i == _currentPage)
                       SliderDot(true)
                     else

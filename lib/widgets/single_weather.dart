@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/models/weather_location.dart';
-import 'package:weather/network_api/jsondecode.dart';
-import 'package:weather/network_api/weathers.dart';
+import 'package:weather/network_api/openjsondecode.dart';
+import 'package:weather/network_api/openweathers.dart';
+import 'package:intl/intl.dart';
 
 class SingleWeather extends StatefulWidget {
   final int index;
   SingleWeather(this.index);
-
   @override
   State<SingleWeather> createState() => _SingleWeatherState();
 }
 
 class _SingleWeatherState extends State<SingleWeather> {
   String name;
-  String name1;
-  WeathersApi weathersDisplay;
+  WeathersApi weathersDisplay = new WeathersApi();
   Api client = Api();
+  var today = new DateTime.now();
+  //var fiftyDaysFromNow = DateFormat('dd-MM-yyyy','en_US').add_H(1);
 
   Future<void> getWeather() async {
     weathersDisplay = await client.getCurrentWeather(name);
@@ -25,15 +26,20 @@ class _SingleWeatherState extends State<SingleWeather> {
 
   @override
   Widget build(BuildContext context) {
-    if(widget.index == 0){
+    if (widget.index == 0) {
       name = 'Hanoi';
-      name1 = 'Hà Nội';
-    }else if(widget.index == 1){
+    } else if (widget.index == 1) {
       name = 'London';
-    }else if(widget.index == 2){
+    } else if (widget.index == 2) {
       name = 'Tokyo';
-    }else if(widget.index == 3){
+    } else if (widget.index == 3) {
       name = 'Sydney';
+    } else if (widget.index == 4) {
+      name = 'Delhi';
+    } else if (widget.index == 5) {
+      name = 'Beijing';
+    } else if (widget.index == 6) {
+      name = 'Osaka';
     }
 
     return FutureBuilder<void>(
@@ -62,7 +68,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                           ),
                           //Ten Thanh Pho
                           Text(
-                            weathersDisplay.cityName,
+                            weathersDisplay.cityName.toString(),
                             style: GoogleFonts.lato(
                                 fontSize: 40,
                                 color: Colors.white,
@@ -73,6 +79,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                           ),
                           //Thoi gian
                           Text(
+                            //DateFormat().format(now),
                             locationList[widget.index].dateTime,
                             style: GoogleFonts.lato(
                                 fontSize: 18,
@@ -223,8 +230,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                       color: Colors.grey,
                                     ),
                                     Container(
-                                      width:
-                                      weathersDisplay.wind,
+                                      width: weathersDisplay.wind,
                                       height: 5,
                                       color: Colors.blueAccent,
                                     )
@@ -273,8 +279,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
-                                Text(
-                                    weathersDisplay.humidity.toString(),
+                                Text(weathersDisplay.humidity.toString(),
                                     style: GoogleFonts.lato(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,

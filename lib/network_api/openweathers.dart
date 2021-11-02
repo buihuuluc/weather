@@ -6,10 +6,8 @@ class WeathersApi{
   int humidity;
   dynamic feels_like;
   int press_sure;
-  String weatherIcon;
-  String weatherDes;
-  double temp_min;
-  double temp_max;
+  dynamic temp_min;
+  dynamic temp_max;
 
   WeathersApi({
     this.cityName,
@@ -19,8 +17,6 @@ class WeathersApi{
     this.humidity,
     this.feels_like,
     this.press_sure,
-    this.weatherIcon,
-    this.weatherDes,
     this.temp_min,
     this.temp_max,
 });
@@ -33,8 +29,6 @@ class WeathersApi{
     humidity = json["main"]["humidity"];
     feels_like = json["main"]["feels_like"];
     press_sure = json["main"]["pressure"];
-    weatherIcon = json["weather"]["icon"];
-    weatherDes = json["weather"]["description"];
     temp_min = json["main"]["temp_min"];
     temp_max = json["main"]["temp_max"];
   }

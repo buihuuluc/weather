@@ -12,6 +12,8 @@ dependencies:
   google_fonts: any
   flutter_svg: any
   http: any
+  intl: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class WeatherLocation {
   final String city;
   final String dateTime;
@@ -61,6 +59,26 @@ class WeatherLocation {
       wind: 19,
       rain: 3,
       humidity: 40,
+    ),
+    WeatherLocation(
+      city: 'Khanh Hoi',
+      dateTime: '11:00 PM - Saturday, 30 Oct 2021',
+      temperature: '25\u2103',
+      weatherType: 'Night',
+      iconUrl: 'assets/moon.svg',
+      wind: 5,
+      rain: 8,
+      humidity: 82,
+    ),
+    WeatherLocation(
+      city: 'U Minh',
+      dateTime: '11:00 PM - Saturday, 30 Oct 2021',
+      temperature: '25\u2103',
+      weatherType: 'Night',
+      iconUrl: 'assets/moon.svg',
+      wind: 5,
+      rain: 8,
+      humidity: 82,
     ),
   ];
 
