@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import '../widgets/single_weather.dart';
 import '../models/weather_location.dart';
 import 'widgets/slider_dot.dart';
-import 'network_api/openweathers.dart';
+import 'network_api/weather.dart';
 
 class WeatherApp extends StatefulWidget {
 

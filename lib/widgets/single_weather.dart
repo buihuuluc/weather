@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/models/weather_location.dart';
-import 'package:weather/network_api/openjsondecode.dart';
-import 'package:weather/network_api/openweathers.dart';
+import 'package:weather/network_api/getdata.dart';
+import 'package:weather/network_api/weather.dart';
 import 'package:intl/intl.dart';
 
 class SingleWeather extends StatefulWidget {
@@ -15,8 +15,8 @@ class SingleWeather extends StatefulWidget {
 
 class _SingleWeatherState extends State<SingleWeather> {
   String name;
-  WeathersApi weathersDisplay = new WeathersApi();
-  Api client = Api();
+  Weather weathersDisplay = new Weather();
+  GetData client = GetData();
   var today = new DateTime.now();
   //var fiftyDaysFromNow = DateFormat('dd-MM-yyyy','en_US').add_H(1);
 
@@ -68,7 +68,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                           ),
                           //Ten Thanh Pho
                           Text(
-                            weathersDisplay.cityName.toString(),
+                            weathersDisplay.name.toString(),
                             style: GoogleFonts.lato(
                                 fontSize: 40,
                                 color: Colors.white,
@@ -80,7 +80,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                           //Thoi gian
                           Text(
                             //DateFormat().format(now),
-                            locationList[widget.index].dateTime,
+                            weathersDisplay.localtime.toString(),
                             style: GoogleFonts.lato(
                                 fontSize: 18,
                                 color: Colors.white,
@@ -158,7 +158,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                         children: [
                           //Nhiet Do
                           Text(
-                            weathersDisplay.temp.toString() + '\u2103',
+                            weathersDisplay.temp_c.toString() + '\u2103',
                             style: GoogleFonts.lato(
                                 fontSize: 68,
                                 color: Colors.white,
@@ -167,15 +167,15 @@ class _SingleWeatherState extends State<SingleWeather> {
                           //Daylight
                           Row(
                             children: [
-                              SvgPicture.asset(
-                                locationList[widget.index].iconUrl,
+                              Image.network(
+                                'https:'+ weathersDisplay.icon,
                                 height: 30,
                                 width: 34,
                                 color: Colors.white,
                               ),
                               SizedBox(width: 5),
                               Text(
-                                weathersDisplay.feels_like.toString(),
+                                weathersDisplay.text,
                                 style: GoogleFonts.lato(
                                     fontSize: 20,
                                     color: Colors.white,
@@ -212,7 +212,8 @@ class _SingleWeatherState extends State<SingleWeather> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
-                                Text(weathersDisplay.wind.toString(),
+                                Text(
+                                    weathersDisplay.wind.toString(),
                                     style: GoogleFonts.lato(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -230,7 +231,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                       color: Colors.grey,
                                     ),
                                     Container(
-                                      width: weathersDisplay.wind,
+                                      width: weathersDisplay.wind.toDouble(),
                                       height: 5,
                                       color: Colors.blueAccent,
                                     )
@@ -240,12 +241,13 @@ class _SingleWeatherState extends State<SingleWeather> {
                             ),
                             Column(
                               children: [
-                                Text('Degree',
+                                Text('Wind Degree',
                                     style: GoogleFonts.lato(
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
-                                Text(weathersDisplay.degree.toString(),
+                                Text(
+                                    weathersDisplay.winddegree.toString(),
                                     style: GoogleFonts.lato(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -264,7 +266,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                     ),
                                     Container(
                                       width:
-                                          locationList[widget.index].rain / 2,
+                                          weathersDisplay.winddegree.toDouble()/2,
                                       height: 5,
                                       color: Colors.redAccent,
                                     )
@@ -279,7 +281,8 @@ class _SingleWeatherState extends State<SingleWeather> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
-                                Text(weathersDisplay.humidity.toString(),
+                                Text(
+                                    weathersDisplay.humidity.toString(),
                                     style: GoogleFonts.lato(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -298,8 +301,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                     ),
                                     Container(
                                       width:
-                                          locationList[widget.index].humidity /
-                                              2,
+                                          weathersDisplay.humidity.toDouble()/2,
                                       height: 5,
                                       color: Colors.yellowAccent,
                                     )
@@ -320,7 +322,12 @@ class _SingleWeatherState extends State<SingleWeather> {
             ),
           );
         }
-        return CircularProgressIndicator();
+
+        return Container(
+          color: Colors.redAccent,
+          width: double.infinity,
+          height: double.infinity,
+        );
       },
     );
   }
