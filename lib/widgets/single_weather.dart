@@ -1,8 +1,10 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/network_api/getdata.dart';
 import 'package:weather/network_api/weather.dart';
-import 'package:tiengviet/tiengviet.dart';
 
 class SingleWeather extends StatefulWidget {
   final int index;
@@ -27,32 +29,31 @@ class _SingleWeatherState extends State<SingleWeather> {
     if (widget.index == 0) {
       name = 'Ca-mau';
     } else if (widget.index == 1) {
-      name = 'Bac-lieu';
+      name = 'Darwin';
     } else if (widget.index == 2) {
-      name = 'Soc-trang';
+      name = 'Seoul';
     } else if (widget.index == 3) {
-      name = 'Can-tho';
+      name = 'Taiwan';
     } else if (widget.index == 4) {
-      name = 'Sai-gon';
+      name = 'Havana';
     } else if (widget.index == 5) {
-      name = 'Vung-tau';
+      name = 'Calgary';
     } else if (widget.index == 6) {
-      name = 'Quang-nam';
+      name = 'Mandalay';
     } else if (widget.index == 7) {
-      name = 'Hoi-an';
+      name = 'Paris';
     } else if (widget.index == 8) {
-      name = 'Da-nang';
+      name = 'Moscow';
     } else if (widget.index == 9) {
-      name = 'Ha-noi';
+      name = 'Dubai';
     }
-
 
     return FutureBuilder<void>(
       future: getWeather(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Container(
-            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             //Hien thi Ten thanh pho, Thoi gian, Nhiet do, Daylight, Day phan cach, Rain, Wind...
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,12 +89,11 @@ class _SingleWeatherState extends State<SingleWeather> {
                               ),
                               //Thoi gian
                               Text(
-                                //DateFormat().format(now),
-                                weathersDisplay.localtime.toString(),
-                                style: GoogleFonts.beVietnam(
+                                weathersDisplay.country.toString(),
+                                style: GoogleFonts.roboto(
                                     fontSize: 18,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.normal),
                               ),
                             ],
                           ),
@@ -106,7 +106,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                               ),
                               //Nhiet do
                               Text(
-                                weathersDisplay.temp_c.toString() + '\u2103',
+                                weathersDisplay.temp.toString() + '\u2103',
                                 style: GoogleFonts.beVietnam(
                                     fontSize: 30,
                                     color: Colors.white,
@@ -118,21 +118,14 @@ class _SingleWeatherState extends State<SingleWeather> {
                               //Kieu thoi tiet
                               Row(
                                 children: [
-                                  Image.network(
-                                    'https:' + weathersDisplay.icon,
-                                    height: 26,
-                                    width: 30,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(width: 5),
                                   Text(
-                                    weathersDisplay.text,
-                                    style: TextStyle(
-                                      fontSize: 16,
+                                    weathersDisplay.localtime.toString(),
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 18,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
+                                  SizedBox(width: 5),
                                 ],
                               )
                             ],
@@ -142,217 +135,186 @@ class _SingleWeatherState extends State<SingleWeather> {
                       SizedBox(
                         height: 15,
                       ),
-                      //Chi so khong khi
+                      //3 Row show info
                       Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+                            //Cloud
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 8),
+                              height: 150,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                color: Colors.black38,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Text(
+                                        'Type',
+                                        style: GoogleFonts.lato(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 180,
+                                        child: Text(
+                                          weathersDisplay.textcondition
+                                              .toString(),
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.satisfy(
+                                              fontSize: 20,
+                                              color: Colors.white54),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: 5,),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(
+                                        'Cloud',
+                                        style: GoogleFonts.satisfy(
+                                          fontSize: 28,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        weathersDisplay.cloud.toString(),
+                                        style: GoogleFonts.satisfy(
+                                          fontSize: 40,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        child: Image.network(
+                                          'https:' +
+                                              weathersDisplay.iconcondition
+                                                  .toString(),
+                                          height: 80,
+                                          width: 80,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              )
+                            ),
                             //UV
                             Container(
                               margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 50,
+                              height: 70,
                               width: 400,
                               decoration: BoxDecoration(
                                 color: Colors.black38,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10)),
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
                                     padding:
-                                    const EdgeInsets.fromLTRB(60, 0, 0, 0),
-                                    child: Image.network(
-                                      'https://www.pnglib.com/wp-content/uploads/2020/01/uv-lamp_5e1c7d972b683.png',
-                                      height: 40,
-                                      width: 40,
-                                      color: Colors.purpleAccent,
+                                        const EdgeInsets.fromLTRB(40, 0, 0, 0),
+                                    child: Container(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            'Ultra Violet',
+                                            style: GoogleFonts.satisfy(
+                                                fontSize: 22,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Text(
-                                    weathersDisplay.uv.toStringAsFixed(1),
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
+                                    weathersDisplay.uv.toString(),
+                                    style: GoogleFonts.satisfy(
+                                      fontSize: 40,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                   Padding(
                                     padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 80, 0),
-                                    child: Text(
-                                      'lvl',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
+                                        const EdgeInsets.fromLTRB(0, 0, 40, 0),
+                                    child: Image.asset(
+                                      'assets/icon/uv.png',
+                                      height: 64,
+                                      width: 64,
+                                      color: Colors.yellowAccent,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            //CO2
+                            //Feel like
                             Container(
                               margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 50,
+                              height: 70,
                               width: 400,
                               decoration: BoxDecoration(
                                 color: Colors.black38,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(10)),
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
                                     padding:
-                                    const EdgeInsets.fromLTRB(60, 0, 0, 0),
-                                    child: Image.network(
-                                      'https://cdn-icons-png.flaticon.com/512/162/162408.png',
-                                      height: 40,
-                                      width: 40,
-                                      color: Colors.redAccent,
+                                        const EdgeInsets.fromLTRB(40, 0, 0, 0),
+                                    child: Container(
+                                      child: Text(
+                                        'Feels like',
+                                        style: GoogleFonts.satisfy(
+                                            fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                   ),
                                   Text(
-                                    weathersDisplay.co.toStringAsFixed(1),
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
-                                  ),
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 60, 0),
-                                    child: Text(
-                                      'ppm',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
+                                    weathersDisplay.feellike.toString() +
+                                        '\u2103',
+                                    style: GoogleFonts.satisfy(
+                                      fontSize: 40,
+                                      color: Colors.white,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                            //NO2
-                            Container(
-                              margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 50,
-                              width: 400,
-                              decoration: BoxDecoration(
-                                color: Colors.black38,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
                                   Padding(
                                     padding:
-                                    const EdgeInsets.fromLTRB(60, 0, 0, 0),
-                                    child: Image.network(
-                                      'https://devward.com/images/7.png',
-                                      height: 40,
-                                      width: 40,
+                                        const EdgeInsets.fromLTRB(0, 0, 40, 0),
+                                    child: Image.asset(
+                                      'assets/icon/feelslike.png',
+                                      height: 46,
+                                      width: 46,
                                       color: Colors.greenAccent,
-                                    ),
-                                  ),
-                                  Text(
-                                    weathersDisplay.no2.toStringAsFixed(1),
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
-                                  ),
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 63, 0),
-                                    child: Text(
-                                      'ppb',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            //Ozone
-                            Container(
-                              margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 50,
-                              width: 400,
-                              decoration: BoxDecoration(
-                                color: Colors.black38,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.fromLTRB(66, 0, 0, 0),
-                                    child: Image.network(
-                                      'https://iconape.com/wp-content/png_logo_vector/isologotipo-o3.png',
-                                      height: 30,
-                                      width: 30,
-                                      color: Colors.blueAccent,
-                                    ),
-                                  ),
-                                  Text(
-                                    weathersDisplay.o3.toStringAsFixed(1),
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
-                                  ),
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 60, 0),
-                                    child: Text(
-                                      'ppm',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            //SO2
-                            Container(
-                              margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 50,
-                              width: 400,
-                              decoration: BoxDecoration(
-                                color: Colors.black38,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.fromLTRB(66, 0, 0, 0),
-                                    child: Image.network(
-                                      'http://giamsatmoitruong.iot47.com/so2.png',
-                                      height: 40,
-                                      width: 40,
-                                      color: Colors.orangeAccent,
-                                    ),
-                                  ),
-                                  Text(
-                                    weathersDisplay.so2.toStringAsFixed(1),
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
-                                  ),
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 31, 0),
-                                    child: Text(
-                                      'mrg/m3',
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
                                     ),
                                   ),
                                 ],
@@ -370,7 +332,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                     //Lan phan cach
                     Container(
                       margin:
-                      EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white30),
                       ),
@@ -383,12 +345,12 @@ class _SingleWeatherState extends State<SingleWeather> {
                           children: [
                             Column(
                               children: [
-                                Text('Tốc độ gió',
+                                Text('Wind',
                                     style: GoogleFonts.beVietnam(
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
-                                Text(weathersDisplay.wind.toString(),
+                                Text(weathersDisplay.windkph.toString(),
                                     style: GoogleFonts.beVietnam(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -406,7 +368,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                       color: Colors.grey,
                                     ),
                                     Container(
-                                      width: weathersDisplay.wind.toDouble(),
+                                      width: weathersDisplay.windkph.toDouble(),
                                       height: 5,
                                       color: Colors.blueAccent,
                                     )
@@ -416,7 +378,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             ),
                             Column(
                               children: [
-                                Text('Độ Gió',
+                                Text('W-Degree',
                                     style: GoogleFonts.beVietnam(
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
@@ -440,8 +402,8 @@ class _SingleWeatherState extends State<SingleWeather> {
                                     ),
                                     Container(
                                       width: weathersDisplay.winddegree
-                                          .toDouble() /
-                                          2,
+                                              .toDouble() %
+                                          60,
                                       height: 5,
                                       color: Colors.redAccent,
                                     )
@@ -451,7 +413,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             ),
                             Column(
                               children: [
-                                Text('Độ Ẩm',
+                                Text('Humidity',
                                     style: GoogleFonts.beVietnam(
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
@@ -475,8 +437,8 @@ class _SingleWeatherState extends State<SingleWeather> {
                                     ),
                                     Container(
                                       width:
-                                      weathersDisplay.humidity.toDouble() /
-                                          2,
+                                          weathersDisplay.humidity.toDouble() /
+                                              2,
                                       height: 5,
                                       color: Colors.yellowAccent,
                                     )

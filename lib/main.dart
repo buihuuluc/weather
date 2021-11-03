@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'testweatherapp.dart';
+import 'weatherapp.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: Locale('vi','VN'),
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
