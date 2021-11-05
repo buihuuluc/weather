@@ -25,3 +25,5 @@ flutter:
   assets:
     - assets/
     - assets/icon/
+    - assets/weather/
+    - assets/aqi/
