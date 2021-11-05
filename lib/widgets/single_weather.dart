@@ -18,7 +18,6 @@ class _SingleWeatherState extends State<SingleWeather> {
   Weather weathersDisplay = new Weather();
   GetData client = GetData();
   var today = new DateTime.now();
-  //var fiftyDaysFromNow = DateFormat('dd-MM-yyyy','en_US').add_H(1);
 
   Future<void> getWeather() async {
     weathersDisplay = await client.getCurrentWeather(name);
@@ -53,6 +52,7 @@ class _SingleWeatherState extends State<SingleWeather> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Container(
+            margin: EdgeInsets.only(top: 50),
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             //Hien thi Ten thanh pho, Thoi gian, Nhiet do, Daylight, Day phan cach, Rain, Wind...
             child: Column(
@@ -133,7 +133,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                         ],
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 5,
                       ),
                       //3 Row show info
                       Container(
@@ -141,10 +141,10 @@ class _SingleWeatherState extends State<SingleWeather> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            //Cloud
+                            //Kiểu thời tiết và Cloud
                             Container(
                                 margin: EdgeInsets.symmetric(vertical: 5),
-                                height: 220,
+                                height: 200,
                                 width: 300,
                                 decoration: BoxDecoration(
                                   color: Colors.black38,
@@ -218,7 +218,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                 )),
                             //UV
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 8),
+                              margin: EdgeInsets.symmetric(vertical: 5),
                               height: 50,
                               width: 400,
                               decoration: BoxDecoration(
@@ -275,7 +275,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             ),
                             //Feel like
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 8),
+                              margin: EdgeInsets.symmetric(vertical: 5),
                               height: 50,
                               width: 400,
                               decoration: BoxDecoration(
@@ -327,23 +327,24 @@ class _SingleWeatherState extends State<SingleWeather> {
                     ],
                   ),
                 ),
-                //Day phan cach va Wind, Rain, Dum
+                //Day phan cach va Wind, W-Degree, Dum
                 Column(
                   children: [
                     //Lan phan cach
                     Container(
                       margin:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white30),
+                        border: Border.all(color: Colors.white54),
                       ),
                     ),
-                    //Wind, Rain, Humidity
+                    //Wind, W-Degree, Humidity
                     Column(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            //Wind
                             Column(
                               children: [
                                 Text('Wind',
@@ -377,6 +378,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                 )
                               ],
                             ),
+                            //W-Degree
                             Column(
                               children: [
                                 Text('W-Degree',
@@ -391,7 +393,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                         color: Colors.white)),
                                 Text('°',
                                     style: GoogleFonts.beVietnam(
-                                        fontSize: 16,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
                                 Stack(
@@ -412,6 +414,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                 )
                               ],
                             ),
+                            //Humidity
                             Column(
                               children: [
                                 Text('Humidity',
@@ -449,6 +452,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             ),
                           ],
                         ),
+                        //Khoang cach voi bottom
                         SizedBox(
                           height: 5,
                         )
@@ -466,7 +470,7 @@ class _SingleWeatherState extends State<SingleWeather> {
             height: double.infinity,
           );
         }
-        return CircularProgressIndicator();
+        return CircularProgressIndicator.adaptive();
       },
     );
   }
