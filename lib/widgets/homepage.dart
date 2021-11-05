@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   int _currentPage = 0;
-  String backgImg = 'assets/camau.jpg';
+  String backgImg = '';
 
   _onPageChange(int i) {
     setState(() {

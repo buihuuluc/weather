@@ -17,7 +17,6 @@ class _SingleWeatherState extends State<SingleWeather> {
   String name;
   Weather weathersDisplay = new Weather();
   GetData client = GetData();
-  var today = new DateTime.now();
 
   Future<void> getWeather() async {
     weathersDisplay = await client.getCurrentWeather(name);
@@ -78,7 +77,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                               ),
                               //Ten Thanh Pho
                               Text(
-                                weathersDisplay.name.toString(),
+                                formatTenTP(weathersDisplay.name),
                                 style: GoogleFonts.beVietnam(
                                     fontSize: 40,
                                     color: Colors.white,
@@ -89,7 +88,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                               ),
                               //Thoi gian
                               Text(
-                                weathersDisplay.country.toString(),
+                                formatTenNuoc(weathersDisplay.country),
                                 style: GoogleFonts.roboto(
                                     fontSize: 18,
                                     color: Colors.white,
@@ -170,7 +169,8 @@ class _SingleWeatherState extends State<SingleWeather> {
                                         Container(
                                           width: 220,
                                           child: Text(
-                                            formatTiengViet(weathersDisplay.textcondition),
+                                            formatTiengViet(
+                                                weathersDisplay.textcondition),
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.satisfy(
                                                 fontSize: 24,
@@ -332,8 +332,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                   children: [
                     //Lan phan cach
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white54),
                       ),
@@ -463,12 +462,16 @@ class _SingleWeatherState extends State<SingleWeather> {
               ],
             ),
           );
-        } else if (snapshot.hasError){
+        } else if (snapshot.hasError) {
           return Container(
-            color: Colors.redAccent,
-            width: double.infinity,
-            height: double.infinity,
-          );
+              width: double.infinity,
+              height: double.infinity,
+              child: Image.asset(
+                'assets/error.jpg',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+              ));
         }
         return CircularProgressIndicator.adaptive();
       },
@@ -518,5 +521,49 @@ class _SingleWeatherState extends State<SingleWeather> {
           .replaceAll('Moderate or heavy rain shower', 'Mưa vừa hoặc mưa to');
     }
     return weathersDisplay.textcondition.toString();
+  }
+
+  String formatTenTP(String txt) {
+    if (txt == 'Ca Mau') {
+      return weathersDisplay.name.toString().replaceAll('Ca Mau', 'Cà Mau');
+    } else if (txt == 'Shanghai') {
+      return weathersDisplay.name
+          .toString()
+          .replaceAll('Shanghai', 'Thượng Hải');
+    } else if (txt == 'Taiwan') {
+      return weathersDisplay.name.toString().replaceAll('Taiwan', 'Đài Loan');
+    }
+    return weathersDisplay.name.toString();
+  }
+
+  String formatTenNuoc(String txt) {
+    if (txt == 'Vietnam') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Vietnam', 'Việt Nam');
+    } else if (txt == 'France') {
+      return weathersDisplay.country.toString().replaceAll('France', 'Pháp');
+    } else if (txt == 'Russia') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Russia', 'Liên Bang Nga');
+    } else if (txt == 'South Korea') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('South Korea', 'Hàn Quốc');
+    } else if (txt == 'Australia') {
+      return weathersDisplay.country.toString().replaceAll('Australia', 'Úc');
+    } else if (txt == 'China') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('China', 'Trung Quốc');
+    } else if (txt == 'Taiwan') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Taiwan', 'Đài Loan');
+    } else if (txt == 'Japan') {
+      return weathersDisplay.country.toString().replaceAll('Japan', 'Nhật Bản');
+    }
+    return weathersDisplay.country.toString();
   }
 }

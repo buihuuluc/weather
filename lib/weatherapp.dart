@@ -22,7 +22,7 @@ class _WeatherAppState extends State<WeatherApp> {
         child: Scaffold(
           extendBodyBehindAppBar: true, //View through Appbar
           appBar: AppBar(
-            toolbarHeight: 40,
+            toolbarHeight: 36,
             title: Text(''),
             leading: IconButton(
               onPressed: () => print('Search icon clicked'),
