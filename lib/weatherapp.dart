@@ -13,12 +13,29 @@ class WeatherApp extends StatefulWidget {
 
 class _WeatherAppState extends State<WeatherApp> {
   int _currentPage = 0;
-  String backgImg = 'assets/sunny.jpg';
+  String backgImg = 'assets/camau.jpg';
 
   _onPageChange(int i) {
     setState(() {
       _currentPage = i;
     });
+  }
+
+  String background(int _current){
+
+    switch(_current+1) {
+      case 1: backgImg = 'assets/camau.jpg'; break;
+      case 2: backgImg = 'assets/calgary.jpg'; break;
+      case 3: backgImg = 'assets/havana.jpg'; break;
+      case 4: backgImg = 'assets/moscow.jpg'; break;
+      case 5: backgImg = 'assets/paris.png'; break;
+      case 6: backgImg = 'assets/seoul.jpg'; break;
+      case 7: backgImg = 'assets/sydney.jpg'; break;
+      case 8: backgImg = 'assets/shanghai.jpg'; break;
+      case 9: backgImg = 'assets/taiwan.jpg'; break;
+      case 10: backgImg = 'assets/tokyo.jpg'; break;
+    }
+    return backgImg;
   }
 
   @override
@@ -53,7 +70,7 @@ class _WeatherAppState extends State<WeatherApp> {
             children: [
               //Background Image, Stack = 1
               Image.asset(
-                backgImg,
+                background(_currentPage),
                 fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
@@ -88,3 +105,4 @@ class _WeatherAppState extends State<WeatherApp> {
         ));
   }
 }
+

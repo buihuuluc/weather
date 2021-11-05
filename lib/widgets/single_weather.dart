@@ -29,23 +29,23 @@ class _SingleWeatherState extends State<SingleWeather> {
     if (widget.index == 0) {
       name = 'Ca-mau';
     } else if (widget.index == 1) {
-      name = 'Darwin';
-    } else if (widget.index == 2) {
-      name = 'Seoul';
-    } else if (widget.index == 3) {
-      name = 'Taiwan';
-    } else if (widget.index == 4) {
-      name = 'Havana';
-    } else if (widget.index == 5) {
       name = 'Calgary';
-    } else if (widget.index == 6) {
-      name = 'Mandalay';
-    } else if (widget.index == 7) {
-      name = 'Paris';
-    } else if (widget.index == 8) {
+    } else if (widget.index == 2) {
+      name = 'Havana';
+    } else if (widget.index == 3) {
       name = 'Moscow';
+    } else if (widget.index == 4) {
+      name = 'Paris';
+    } else if (widget.index == 5) {
+      name = 'Seoul';
+    } else if (widget.index == 6) {
+      name = 'Sydney';
+    } else if (widget.index == 7) {
+      name = 'Shanghai';
+    } else if (widget.index == 8) {
+      name = 'Taiwan';
     } else if (widget.index == 9) {
-      name = 'Dubai';
+      name = 'Tokyo';
     }
 
     return FutureBuilder<void>(
@@ -143,8 +143,8 @@ class _SingleWeatherState extends State<SingleWeather> {
                           children: [
                             //Cloud
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 150,
+                              margin: EdgeInsets.symmetric(vertical: 5),
+                              height: 220,
                               width: 300,
                               decoration: BoxDecoration(
                                 color: Colors.black38,
@@ -152,7 +152,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                     BorderRadius.all(Radius.circular(10)),
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Column(
                                     children: [
@@ -168,7 +168,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                         height: 5,
                                       ),
                                       Container(
-                                        width: 180,
+                                        width: 220,
                                         child: Text(
                                           weathersDisplay.textcondition
                                               .toString(),
@@ -180,7 +180,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                       )
                                     ],
                                   ),
-                                  SizedBox(height: 5,),
+                                  // SizedBox(height: 5,),
                                   Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -201,7 +201,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                                       ),
                                       Padding(
                                         padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        const EdgeInsets.fromLTRB(0, 0, 0, 14),
                                         child: Image.network(
                                           'https:' +
                                               weathersDisplay.iconcondition
@@ -218,7 +218,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             //UV
                             Container(
                               margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 70,
+                              height: 50,
                               width: 400,
                               decoration: BoxDecoration(
                                 color: Colors.black38,
@@ -276,7 +276,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             //Feel like
                             Container(
                               margin: EdgeInsets.symmetric(vertical: 8),
-                              height: 70,
+                              height: 50,
                               width: 400,
                               decoration: BoxDecoration(
                                 color: Colors.black38,
