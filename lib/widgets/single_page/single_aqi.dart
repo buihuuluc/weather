@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather/network_api/getdata.dart';
-import 'package:weather/network_api/weather.dart';
+import 'package:weather/network/getdata.dart';
+import 'package:weather/network/weather.dart';
 
 class SingleAQI extends StatefulWidget {
   final int index;
@@ -91,17 +91,18 @@ class _SingleAQIState extends State<SingleAQI> {
                 //Text Chất lượng không khí
                 Container(
 
-                  height: 50,
-                  width: 340,
+                  height: 60,
+                  width: 260,
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(36, 36, 36, 0.5),
                       borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('Chất lượng không khí',
-                      style: GoogleFonts.beVietnam(
+                      Text('Air Quality',
+                      style: GoogleFonts.satisfy(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         fontSize: 30,

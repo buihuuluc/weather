@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather/network_api/getdata.dart';
-import 'package:weather/network_api/weather.dart';
+import 'package:weather/network/getdata.dart';
+import 'package:weather/network/weather.dart';
 
 class SingleWeather extends StatefulWidget {
   final int index;
@@ -58,8 +58,8 @@ class _SingleWeatherState extends State<SingleWeather> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //Ten thanh pho, thoi gian, nhiet do, daylight
-                Expanded(
+                //Ten thanh pho, thoi gian, nhiet do, Thoitiet
+                Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +73,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 90,
+                                height: 80,
                               ),
                               //Ten Thanh Pho
                               Text(
@@ -90,7 +90,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                               Text(
                                 formatTenNuoc(weathersDisplay.country),
                                 style: GoogleFonts.roboto(
-                                    fontSize: 18,
+                                    fontSize: 22,
                                     color: Colors.white,
                                     fontWeight: FontWeight.normal),
                               ),
@@ -98,16 +98,17 @@ class _SingleWeatherState extends State<SingleWeather> {
                           ),
                           //Nhiet do va Kieu thoi tiet
                           Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               SizedBox(
-                                height: 100,
+                                height: 80,
                               ),
                               //Nhiet do
                               Text(
                                 weathersDisplay.temp.toString() + '\u2103',
                                 style: GoogleFonts.beVietnam(
-                                    fontSize: 30,
+                                    fontSize: 40,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -132,7 +133,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                         ],
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 60,
                       ),
                       //3 Row show info
                       Container(
@@ -276,7 +277,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                             //Feel like
                             Container(
                               margin: EdgeInsets.symmetric(vertical: 5),
-                              height: 50,
+                              height: 60,
                               width: 400,
                               decoration: BoxDecoration(
                                 color: Colors.black38,
@@ -348,7 +349,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                               children: [
                                 Text('Wind',
                                     style: GoogleFonts.beVietnam(
-                                        fontSize: 16,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
                                 Text(weathersDisplay.windkph.toString(),
@@ -382,7 +383,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                               children: [
                                 Text('W-Degree',
                                     style: GoogleFonts.beVietnam(
-                                        fontSize: 16,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
                                 Text(weathersDisplay.winddegree.toString(),
@@ -418,7 +419,7 @@ class _SingleWeatherState extends State<SingleWeather> {
                               children: [
                                 Text('Humidity',
                                     style: GoogleFonts.beVietnam(
-                                        fontSize: 16,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
                                 Text(weathersDisplay.humidity.toString(),

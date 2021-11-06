@@ -1,5 +1,5 @@
 import 'dart:convert';
-import '../network_api/weather.dart';
+import '../network/weather.dart';
 import 'package:http/http.dart' as http;
 
 class GetData{

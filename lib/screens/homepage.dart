@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import '../widgets/slider_dot.dart';
-import '../widgets/single_aqi.dart';
+import '../widgets/single_page/single_weather.dart';
 
-
-class AQIPage extends StatefulWidget {
-  const AQIPage({Key key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
 
   @override
-  State<AQIPage> createState() => _AQIPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _AQIPageState extends State<AQIPage> {
+class _HomePageState extends State<HomePage> {
 
   int _currentPage = 0;
   String backgImg = '';
@@ -24,16 +23,16 @@ class _AQIPageState extends State<AQIPage> {
   String background(int _current){
 
     switch(_current+1) {
-      case 1: backgImg = 'assets/aqi/camau.jpg'; break;
-      case 2: backgImg = 'assets/aqi/calgary.jpg'; break;
-      case 3: backgImg = 'assets/aqi/havana.jpg'; break;
-      case 4: backgImg = 'assets/aqi/moscow.jpg'; break;
-      case 5: backgImg = 'assets/aqi/paris.png'; break;
-      case 6: backgImg = 'assets/aqi/seoul.jpg'; break;
-      case 7: backgImg = 'assets/aqi/sydney.jpg'; break;
-      case 8: backgImg = 'assets/aqi/shanghai.jpg'; break;
-      case 9: backgImg = 'assets/aqi/taiwan.jpg'; break;
-      case 10: backgImg = 'assets/aqi/tokyo.jpg'; break;
+      case 1: backgImg = 'assets/weather/camau.jpg'; break;
+      case 2: backgImg = 'assets/weather/calgary.jpg'; break;
+      case 3: backgImg = 'assets/weather/havana.jpg'; break;
+      case 4: backgImg = 'assets/weather/moscow.jpg'; break;
+      case 5: backgImg = 'assets/weather/paris.png'; break;
+      case 6: backgImg = 'assets/weather/seoul.jpg'; break;
+      case 7: backgImg = 'assets/weather/sydney.jpg'; break;
+      case 8: backgImg = 'assets/weather/shanghai.jpg'; break;
+      case 9: backgImg = 'assets/weather/taiwan.jpg'; break;
+      case 10: backgImg = 'assets/weather/tokyo.jpg'; break;
     }
     return backgImg;
   }
@@ -72,12 +71,11 @@ class _AQIPageState extends State<AQIPage> {
             onPageChanged: _onPageChange,
             scrollDirection: Axis.horizontal,
             itemCount: 10,
-            itemBuilder: (ctx, i) => SingleAQI(i),
+            itemBuilder: (ctx, i) => SingleWeather(i),
           ),
           //Toan bo thong tin hien thi ben duoi Appbar, Stack = 3
         ],
       ),
     );
-
   }
 }
