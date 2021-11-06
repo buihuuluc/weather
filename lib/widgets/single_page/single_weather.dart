@@ -60,6 +60,7 @@ class _SingleWeatherState extends State<SingleWeather> {
               children: [
                 //Ten thanh pho, thoi gian, nhiet do, Thoitiet
                 Container(
+                  padding: EdgeInsets.only(top: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -380,38 +381,25 @@ class _SingleWeatherState extends State<SingleWeather> {
                             ),
                             //W-Degree
                             Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text('W-Degree',
                                     style: GoogleFonts.beVietnam(
                                         fontSize: 18,
                                         fontWeight: FontWeight.normal,
                                         color: Colors.white)),
-                                Text(weathersDisplay.winddegree.toString(),
+                                Text(weathersDisplay.winddegree.toString() + '°',
                                     style: GoogleFonts.beVietnam(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white)),
-                                Text('°',
-                                    style: GoogleFonts.beVietnam(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.white)),
+                                SizedBox(height: 20,),
                                 Stack(
                                   children: [
-                                    Container(
-                                      width: 60,
-                                      height: 5,
-                                      color: Colors.grey,
-                                    ),
-                                    Container(
-                                      width: weathersDisplay.winddegree
-                                              .toDouble() %
-                                          60,
-                                      height: 5,
-                                      color: Colors.redAccent,
-                                    )
+                                    Container(width: 60,height: 5,color: Colors.transparent,)
                                   ],
                                 )
+
                               ],
                             ),
                             //Humidity

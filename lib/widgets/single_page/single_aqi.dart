@@ -62,24 +62,24 @@ class _SingleAQIState extends State<SingleAQI> {
                       //Ten thanh pho
                       Text(
                         formatTenTP(weathersDisplay.name),
-                        style: GoogleFonts.beVietnam(
-                          fontSize: 40,
+                        style: GoogleFonts.robotoSlab(
+                          fontSize: 60,
                           color: Colors.white,
                           fontWeight: FontWeight.bold
                         ),
                       ),
                       Text(
                         formatTenNuoc(weathersDisplay.country),
-                        style: GoogleFonts.beVietnam(
-                          fontSize: 18,
+                        style: GoogleFonts.robotoSlab(
+                          fontSize: 30,
                           color: Colors.white,
                         ),
                       ),
                       SizedBox(height: 5,),
                       Text(
                         weathersDisplay.localtime.toString(),
-                        style: TextStyle(
-                          fontSize: 18,
+                        style: GoogleFonts.robotoSlab(
+                          fontSize: 30,
                           color: Colors.white,
                           fontStyle: FontStyle.italic
                       )
@@ -94,7 +94,7 @@ class _SingleAQIState extends State<SingleAQI> {
                   height: 60,
                   width: 260,
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(36, 36, 36, 0.5),
+                      color: Color.fromRGBO(193,193,193, 0.3),
                       borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
                   child: Column(
@@ -102,7 +102,7 @@ class _SingleAQIState extends State<SingleAQI> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('Air Quality',
-                      style: GoogleFonts.satisfy(
+                      style: GoogleFonts.robotoSlab(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         fontSize: 30,
@@ -128,8 +128,8 @@ class _SingleAQIState extends State<SingleAQI> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Image.asset('assets/icon/co2.png', width: 45, height: 45,color: Colors.greenAccent,),
-                            Text(weathersDisplay.co.toStringAsFixed(1), style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text('ppm', style: TextStyle(color: Colors.white, fontSize: 18),),
+                            Text(weathersDisplay.co.toStringAsFixed(1), style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
+                            Text('ppm', style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
                           ],
                         ),
                       ),
@@ -144,9 +144,9 @@ class _SingleAQIState extends State<SingleAQI> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text('PM2.5', style: TextStyle(color: Colors.yellowAccent, fontSize: 21,fontWeight: FontWeight.bold),),
-                            Text(weathersDisplay.pm2_5.toStringAsFixed(1), style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text('μm/m3', style: TextStyle(color: Colors.white, fontSize: 18),),
+                            Text('PM2.5', style: GoogleFonts.robotoSlab(color: Colors.yellowAccent, fontSize: 21,fontWeight: FontWeight.bold),),
+                            Text(weathersDisplay.pm2_5.toStringAsFixed(1), style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
+                            Text('μm/m3', style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
                           ],
                         ),
                       ),
@@ -162,8 +162,8 @@ class _SingleAQIState extends State<SingleAQI> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Image.asset('assets/icon/o3.png', width: 35, height: 35,color: Colors.deepOrangeAccent,),
-                            Text(weathersDisplay.o3.toStringAsFixed(1), style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text('mg/m3', style: TextStyle(color: Colors.white, fontSize: 18),),
+                            Text(weathersDisplay.o3.toStringAsFixed(1), style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
+                            Text('mg/m3', style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
                           ],
                         ),
                       ),
@@ -188,8 +188,8 @@ class _SingleAQIState extends State<SingleAQI> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Image.asset('assets/icon/so2.png', width: 45, height: 45,color: Colors.blueAccent,),
-                            Text(weathersDisplay.so2.toStringAsFixed(1), style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text('mg/m3', style: TextStyle(color: Colors.white, fontSize: 18),),
+                            Text(weathersDisplay.so2.toStringAsFixed(1), style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
+                            Text('mg/m3', style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
                           ],
                         ),
                       ),
@@ -204,9 +204,9 @@ class _SingleAQIState extends State<SingleAQI> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text('PM1.0', style: TextStyle(color: Colors.purpleAccent, fontSize: 21,fontWeight: FontWeight.bold),),
-                            Text(weathersDisplay.pm10.toStringAsFixed(1), style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text('μm/m3', style: TextStyle(color: Colors.white, fontSize: 18),),
+                            Text('PM1.0', style: GoogleFonts.robotoSlab(color: Colors.purpleAccent, fontSize: 21,fontWeight: FontWeight.bold),),
+                            Text(weathersDisplay.pm10.toStringAsFixed(1), style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
+                            Text('μm/m3', style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
                           ],
                         ),
                       ),
@@ -222,8 +222,8 @@ class _SingleAQIState extends State<SingleAQI> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Image.asset('assets/icon/no2.png', width: 45, height: 45,color: Colors.redAccent,),
-                            Text(weathersDisplay.no2.toStringAsFixed(1), style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text('ppm', style: TextStyle(color: Colors.white, fontSize: 18),),
+                            Text(weathersDisplay.no2.toStringAsFixed(1), style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
+                            Text('ppm', style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 18),),
                           ],
                         ),
                       ),

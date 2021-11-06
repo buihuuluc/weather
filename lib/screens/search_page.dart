@@ -118,7 +118,7 @@ class _SearchPageState extends State<SearchPage> {
                                     Text(
                                       formatTenTP(weathersDisplay.name),
                                       style: GoogleFonts.beVietnam(
-                                          fontSize: 40,
+                                          fontSize: 34,
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -141,7 +141,7 @@ class _SearchPageState extends State<SearchPage> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     SizedBox(
-                                      height: 90,
+                                      height: 80,
                                     ),
                                     //Nhiet do
                                     Text(
@@ -600,6 +600,10 @@ class _SearchPageState extends State<SearchPage> {
       return weathersDisplay.name.toString().replaceAll('Bac Lieu', 'Bạc Liêu');
     } else if (txt == 'Soc Trang') {
       return weathersDisplay.name.toString().replaceAll('Soc Trang', 'Sóc Trăng');
+    } else if (txt == 'Ho Chi Minh City') {
+      return weathersDisplay.name.toString().replaceAll('Ho Chi Minh City', 'TP.Hồ Chí Minh');
+    } else if (txt == 'Sai Gon') {
+      return weathersDisplay.name.toString().replaceAll('Sai Gon', 'TP.Hồ Chí Minh');
     }
     return weathersDisplay.name.toString();
   }
