@@ -18,7 +18,6 @@ class _SearchPageState extends State<SearchPage> {
     setState(() {
       name = input;
     });
-    print(name);
   }
 
   Weather weathersDisplay = new Weather();
@@ -33,7 +32,6 @@ class _SearchPageState extends State<SearchPage> {
     // TODO: implement initState
     super.initState();
     _onTextFieldSubmitted(name);
-    print(name);
   }
 
   @override
@@ -555,8 +553,8 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   String formatTenTP(String txt) {
-    if (txt == 'Ca mau') {
-      return weathersDisplay.name.toString().replaceAll('Ca mau', 'Cà Mau');
+    if (txt == 'Ca Mau') {
+      return weathersDisplay.name.toString().replaceAll('Ca Mau', 'Cà Mau');
     } else if (txt == 'Shanghai') {
       return weathersDisplay.name
           .toString()
@@ -587,6 +585,74 @@ class _SearchPageState extends State<SearchPage> {
       return weathersDisplay.name.toString().replaceAll('Ho Chi Minh City', 'TP.Hồ Chí Minh');
     } else if (txt == 'Sai Gon') {
       return weathersDisplay.name.toString().replaceAll('Sai Gon', 'TP.Hồ Chí Minh');
+    } else if (txt == 'Song Ong Doc') {
+      return weathersDisplay.name.toString().replaceAll('Song Ong Doc', 'TT.Sông Đốc');
+    } else if (txt == 'Nam Can') {
+      return weathersDisplay.name.toString().replaceAll('Nam Can', 'TT.Năm Căn');
+    } else if (txt == 'Gia Rai') {
+      return weathersDisplay.name.toString().replaceAll('Gia Rai', 'TX.Giá Rai');
+    } else if (txt == 'Hoi An') {
+      return weathersDisplay.name.toString().replaceAll('Hoi An', 'Hội An');
+    } else if (txt == 'Quang Nam') {
+      return weathersDisplay.name.toString().replaceAll('Quang Nam', 'Quảng Nam');
+    } else if (txt == 'Thu Dau Mot') {
+      return weathersDisplay.name.toString().replaceAll('Thu Dau Mot', 'Thủ Dầu Một');
+    } else if (txt == 'Binh Duong') {
+      return weathersDisplay.name.toString().replaceAll('Binh Duong', 'Bình Dương');
+    } else if (txt == 'Bien Hoa') {
+      return weathersDisplay.name.toString().replaceAll('Bien Hoa', 'Biên Hòa');
+    } else if (txt == 'Buon Bubo Dak Nong') {
+      return weathersDisplay.name.toString().replaceAll('Buon Bubo Dak Nong', 'Đắk Nông');
+    } else if (txt == 'Nguyen') {
+      return weathersDisplay.name.toString().replaceAll('Nguyen', 'Tây Nguyên');
+    } else if (txt == 'Dien Bien Phu') {
+      return weathersDisplay.name.toString().replaceAll('Dien Bien Phu', 'Điện Biên Phủ');
+    } else if (txt == 'Lao Cai') {
+      return weathersDisplay.name.toString().replaceAll('Lao Cai', 'Lào Cai');
+    } else if (txt == 'Yen Bai') {
+      return weathersDisplay.name.toString().replaceAll('Yen Bai', 'Yên Bái');
+    } else if (txt == 'Cao Bang') {
+      return weathersDisplay.name.toString().replaceAll('Cao Bang', 'Cao Bằng');
+    } else if (txt == 'Lang Son') {
+      return weathersDisplay.name.toString().replaceAll('Lang Son', 'Lạng Sơn');
+    } else if (txt == 'Bac Kan') {
+      return weathersDisplay.name.toString().replaceAll('Bac Kan', 'Bắc Kạn');
+    } else if (txt == 'Hoa Binh') {
+      return weathersDisplay.name.toString().replaceAll('Hoa Binh', 'Hòa Bình');
+    } else if (txt == 'Ba Ria') {
+      return weathersDisplay.name.toString().replaceAll('Ba Ria', 'Tỉnh Bà Rịa');
+    } else if (txt == 'Phu Yen') {
+      return weathersDisplay.name.toString().replaceAll('Phu Yen', 'Phú Yên');
+    } else if (txt == 'Hoa Khanh') {
+      return weathersDisplay.name.toString().replaceAll('Hoa Khanh', 'Khánh Hòa');
+    } else if (txt == 'Chau Doc') {
+      return weathersDisplay.name.toString().replaceAll('Chau Doc', 'Châu Đốc');
+    } else if (txt == 'Dong Lam') {
+      return weathersDisplay.name.toString().replaceAll('Dong Lam', 'Lâm Đồng');
+    } else if (txt == 'Thai Binh') {
+      return weathersDisplay.name.toString().replaceAll('Thai Binh', 'Thái Bình');
+    } else if (txt == 'Hai Phong') {
+      return weathersDisplay.name.toString().replaceAll('Hai Phong', 'Hải Phòng');
+    } else if (txt == 'Yen Hung') {
+      return weathersDisplay.name.toString().replaceAll('Yen Hung', 'Hưng Yên');
+    } else if (txt == 'Bac Ninh') {
+      return weathersDisplay.name.toString().replaceAll('Bac Ninh', 'Bắc Ninh');
+    } else if (txt == 'Tuyen Quang') {
+      return weathersDisplay.name.toString().replaceAll('Tuyen Quang', 'Tuyên Quang');
+    } else if (txt == 'Son La') {
+      return weathersDisplay.name.toString().replaceAll('Son La', 'Sơn La');
+    } else if (txt == 'Thanh Hoa') {
+      return weathersDisplay.name.toString().replaceAll('Thanh Hoa', 'Thanh Hóa');
+    } else if (txt == 'Ben Tre') {
+      return weathersDisplay.name.toString().replaceAll('Ben Tre', 'Bến Tre');
+    } else if (txt == 'Dong Thap') {
+      return weathersDisplay.name.toString().replaceAll('Dong Thap', 'Đồng Tháp');
+    } else if (txt == 'Tra Vinh') {
+      return weathersDisplay.name.toString().replaceAll('Tra Vinh', 'Trà Vinh');
+    } else if (txt == 'Ha Giang') {
+      return weathersDisplay.name.toString().replaceAll('Ha Giang', 'Hà Giang');
+    } else if (txt == 'Tay Ninh') {
+      return weathersDisplay.name.toString().replaceAll('Tay Ninh', 'Tây Ninh');
     }
     return weathersDisplay.name.toString();
   }
@@ -626,6 +692,34 @@ class _SearchPageState extends State<SearchPage> {
       return weathersDisplay.country
           .toString()
           .replaceAll('North Korea', 'Bắc Triều Tiên');
+    } else if (txt == 'Spain') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Spain', 'Tây Ban Nha');
+    } else if (txt == 'Portugal') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Portugal', 'Bồ Đào Nha');
+    } else if (txt == 'Poland') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Poland', 'Phần Lan');
+    } else if (txt == 'Germany') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Germany', 'Đức');
+    } else if (txt == 'Mongolia') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Mongolia', 'Mông Cổ');
+    } else if (txt == 'Slovakia') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('Slovakia', 'Tiệp Khắc');
+    } else if (txt == 'United Kingdom') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('United Kingdom', 'Vương Quốc Anh');
     }
     return weathersDisplay.country.toString();
   }
