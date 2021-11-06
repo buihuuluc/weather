@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather/widgets/single_page/single_search.dart';
 import 'package:weather/network/getdata.dart';
 import 'package:weather/network/weather.dart';
 
@@ -13,7 +12,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   String bg = 'assets/search/searchbg.jpg';
-  String name = 'Ca-mau';
+  String name = 'London';
 
   _onTextFieldSubmitted(String input) {
     setState(() {
@@ -393,8 +392,7 @@ class _SearchPageState extends State<SearchPage> {
                           Column(
                             children: [
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   //Wind
                                   Column(
@@ -422,8 +420,7 @@ class _SearchPageState extends State<SearchPage> {
                                             color: Colors.grey,
                                           ),
                                           Container(
-                                            width: weathersDisplay.windkph
-                                                .toDouble(),
+                                            width: weathersDisplay.windkph.toDouble(),
                                             height: 5,
                                             color: Colors.blueAccent,
                                           )
@@ -433,39 +430,25 @@ class _SearchPageState extends State<SearchPage> {
                                   ),
                                   //W-Degree
                                   Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text('W-Degree',
                                           style: GoogleFonts.beVietnam(
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal,
                                               color: Colors.white)),
-                                      Text(
-                                          weathersDisplay.winddegree.toString(),
+                                      Text(weathersDisplay.winddegree.toString() + '°',
                                           style: GoogleFonts.beVietnam(
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white)),
-                                      Text('°',
-                                          style: GoogleFonts.beVietnam(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.normal,
-                                              color: Colors.white)),
+                                      SizedBox(height: 20,),
                                       Stack(
                                         children: [
-                                          Container(
-                                            width: 60,
-                                            height: 5,
-                                            color: Colors.grey,
-                                          ),
-                                          Container(
-                                            width: weathersDisplay.winddegree
-                                                    .toDouble() %
-                                                60,
-                                            height: 5,
-                                            color: Colors.redAccent,
-                                          )
+                                          Container(width: 60,height: 5,color: Colors.transparent,)
                                         ],
                                       )
+
                                     ],
                                   ),
                                   //Humidity
@@ -494,8 +477,8 @@ class _SearchPageState extends State<SearchPage> {
                                             color: Colors.grey,
                                           ),
                                           Container(
-                                            width: weathersDisplay.humidity
-                                                    .toDouble() /
+                                            width:
+                                            weathersDisplay.humidity.toDouble() /
                                                 2,
                                             height: 5,
                                             color: Colors.yellowAccent,

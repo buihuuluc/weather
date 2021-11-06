@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: AnimatedSplashScreen        (
         splash: Image.asset('assets/icon/feelslike.png',
-          width: 150,
+          width: 80,
           height: double.maxFinite,
           fit: BoxFit.cover,
         ),
