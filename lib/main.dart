@@ -1,5 +1,7 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'weatherapp.dart';
+import 'package:flutter/animation.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +19,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WeatherApp(),
+      home: AnimatedSplashScreen        (
+        splash: Image.asset('assets/icon/feelslike.png',
+          width: 150,
+          height: double.maxFinite,
+          fit: BoxFit.cover,
+        ),
+        nextScreen: WeatherApp(),
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Colors.blue,
+      ),
     );
   }
 }

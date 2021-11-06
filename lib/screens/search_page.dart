@@ -572,14 +572,34 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   String formatTenTP(String txt) {
-    if (txt == 'Ca Mau') {
-      return weathersDisplay.name.toString().replaceAll('Ca Mau', 'Cà Mau');
+    if (txt == 'Ca mau') {
+      return weathersDisplay.name.toString().replaceAll('Ca mau', 'Cà Mau');
     } else if (txt == 'Shanghai') {
       return weathersDisplay.name
           .toString()
           .replaceAll('Shanghai', 'Thượng Hải');
     } else if (txt == 'Taiwan') {
       return weathersDisplay.name.toString().replaceAll('Taiwan', 'Đài Loan');
+    } else if (txt == 'Pyongyang') {
+      return weathersDisplay.name.toString().replaceAll('Pyongyang', 'Bình Nhưỡng');
+    } else if (txt == 'Chengdu') {
+      return weathersDisplay.name.toString().replaceAll('Chengdu', 'Thành Đô');
+    } else if (txt == 'Da Nang') {
+      return weathersDisplay.name.toString().replaceAll('Da Nang', 'Đà Nẵng');
+    } else if (txt == 'Da Lat') {
+      return weathersDisplay.name.toString().replaceAll('Da Lat', 'Đà Lạt');
+    } else if (txt == 'Ha Noi') {
+      return weathersDisplay.name.toString().replaceAll('Ha Noi', 'Hà Nội');
+    } else if (txt == 'Vung Tau') {
+      return weathersDisplay.name.toString().replaceAll('Vung Tau', 'Vũng Tàu');
+    } else if (txt == 'Ap Binh Thuan') {
+      return weathersDisplay.name.toString().replaceAll('Ap Binh Thuan', 'Bình Thuận');
+    } else if (txt == 'Can Tho') {
+      return weathersDisplay.name.toString().replaceAll('Can Tho', 'Cần Thơ');
+    } else if (txt == 'Bac Lieu') {
+      return weathersDisplay.name.toString().replaceAll('Bac Lieu', 'Bạc Liêu');
+    } else if (txt == 'Soc Trang') {
+      return weathersDisplay.name.toString().replaceAll('Soc Trang', 'Sóc Trăng');
     }
     return weathersDisplay.name.toString();
   }
@@ -615,7 +635,14 @@ class _SearchPageState extends State<SearchPage> {
       return weathersDisplay.country
           .toString()
           .replaceAll('United States of America', 'Mỹ Đế');
+    } else if (txt == 'North Korea') {
+      return weathersDisplay.country
+          .toString()
+          .replaceAll('North Korea', 'Bắc Triều Tiên');
     }
     return weathersDisplay.country.toString();
+  }
+  String doiten(String txt){
+    return txt.toString().replaceAll(" ", "").toLowerCase();
   }
 }
